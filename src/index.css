@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@theme {
+  --color-canvas: #0e1116;
+  --color-panel: #1a1f27;
+  --color-panel2: #212836;
+  --color-accent: #34d399;
+  --color-accent-strong: #10b981;
+  --color-ink: #f5f7fa;
+  --color-dim: #8a94a6;
+  --radius-card: 18px;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(52, 211, 153, 0.25);
+}
+
+/* 卡片翻转 */
+@keyframes flip-in {
+  0% {
+    transform: perspective(900px) rotateY(80deg);
+    opacity: 0;
+  }
+  100% {
+    transform: perspective(900px) rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.flip-in {
+  animation: flip-in 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.fade-up {
+  animation: fade-up 0.25s ease-out both;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* 滑块 */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 9999px;
+  background: var(--color-panel2);
+  outline: none;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: #fff;
+  border: 3px solid var(--color-accent);
+  cursor: pointer;
+}
+.slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: #fff;
+  border: 3px solid var(--color-accent);
+  cursor: pointer;
+}
+
+/* 菜谱详情页：暖调纸张 */
+.recipe-page {
+  background-color: #faf6ef;
+  background-image: radial-gradient(rgba(90, 70, 45, 0.05) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.recipe-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(120, 96, 66, 0.08), 0 2px 6px rgba(120, 96, 66, 0.04);
+}
+
+/* 图片占位：暖白卡片 + 极淡纸质纹理，与真实图片同比例/圆角/裁切 */
+.dish-placeholder {
+  background-color: #f7ede1;
+  background-image: radial-gradient(rgba(90, 70, 45, 0.06) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
